@@ -7,9 +7,9 @@
   "width": "container",
   "height": "container",
   "title": {
-    "text": "Estimated Resident Population of Australia 2023 above 65 years",
-    "fontSize": 18,
-    "font": "Arial"
+    "text": "Population of Australia over 65 years",
+    "fontSize": 27,
+    "font": "Roboto"
   },
   "projection": {
     "type": "mercator"
@@ -72,8 +72,10 @@
           },
           "legend": {
             "title": "Scale",
-            "titleFontSize": 12,
-            "labelFontSize": 10,
+            "titleFontSize": 14,
+            "titleFont": "Roboto",
+            "labelFont": "Roboto",
+            "labelFontSize": 12,
             "labelColor": "#4A4A4A",
             "orient": "bottom-left",
             "titleFontWeight": "bold",

@@ -6,6 +6,27 @@ body {
   background-color: #f9f9f9;
 }
 
+.vega-tooltip {
+  font-family: "Roboto", sans-serif;
+  font-size: 14px;
+  color: #333;
+  background-color: #f9f9f9;
+  border: 1px solid #ccc;
+  padding: 8px;
+  border-radius: 4px;
+}
+
+.vega-tooltip h2 {
+  font-weight: bold;
+  font-size: 16px;
+  margin: 0;
+  padding-bottom: 4px;
+}
+
+.vega-tooltip p {
+  margin: 0;
+}
+
 /* Section 1: Header */
 .header-section {
   background-color: #4caf50;
@@ -31,10 +52,11 @@ body {
 .main-container {
   display: flex;
   height: calc(100vh - 150px); /* Fill the screen minus header */
+  padding-bottom: 50px;
 }
 
 .sidebar {
-  width: 50%; /* Sidebar still takes 50% */
+  width: 46%; /* Sidebar still takes 50% */
   background-color: #f2f2f2;
   padding-top: 30px;
   padding-left: 50px;
@@ -47,7 +69,7 @@ body {
 }
 
 .map-container {
-  width: 50%; /* Map container still takes 50% */
+  width: 54%; /* Map container still takes 50% */
   background-color: #ffffff;
   padding: 20px;
   padding-top: 50px;
@@ -126,7 +148,7 @@ p {
   font-size: 1.1rem;
   color: #444;
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
 }
 
 .state-visuals {
@@ -140,16 +162,23 @@ p {
 
 .state-info {
   background-color: #f2f2f2;
-  padding: 20px;
+  padding-top: 30px;
+  padding-left: 50px;
+  padding-right: 50px;
+  padding-bottom: 125px;
   text-align: center;
   font-family: "Roboto", sans-serif;
   font-size: 1.1rem;
   color: #444;
   line-height: 1.6;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .state-chart {
   background-color: #ffffff;
-  padding: 20px;
+  padding: 60px;
   font-family: "Roboto", sans-serif;
 }

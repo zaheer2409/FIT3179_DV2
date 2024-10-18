@@ -7,9 +7,9 @@
   "width": "container",
   "height": "container",
   "title": {
-    "text": "Estimated Resident Population of Australia 2023 between 15-64 years",
-    "fontSize": 18,
-    "font": "Arial"
+    "text": "Population of Australia between 15-64 years",
+    "fontSize": 27,
+    "font": "Roboto"
   },
   "projection": {
     "type": "mercator"
@@ -72,9 +72,11 @@
           },
           "legend": {
             "title": "Scale",
-            "titleFontSize": 12,
-            "labelFontSize": 10,
+            "titleFontSize": 14,
+            "labelFontSize": 12,
             "labelColor": "#4A4A4A",
+            "titleFont": "Roboto",
+            "labelFont": "Roboto",
             "orient": "bottom-left",
             "titleFontWeight": "bold",
             "labelExpr": "datum.value === 72 ? 'above 72%' : datum.value === 67 ? '67%' : datum.value === 62 ? '62%' : datum.value === 57 ? '57%' : 'below 60%'"

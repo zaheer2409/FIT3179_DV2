@@ -1,6 +1,5 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": "Year-over-Year Population Percentage Change for Sydney and NSW",
   "data": {
     "url": "data/time_series_data.csv"
   },
@@ -17,20 +16,42 @@
     }
   },
   "encoding": {
-    "x": { "field": "Year", "type": "temporal", "axis": { "title": "Year" } },
+    "x": {
+      "field": "Year",
+      "type": "temporal",
+      "axis": {
+        "title": "Year",
+        "titleFont": "Roboto",
+        "titleFontSize": 15,
+        "labelFont": "Roboto",
+        "labelFontSize": 13
+      }
+    },
     "y": {
       "field": "Percent_Change",
       "type": "quantitative",
-      "axis": { "title": "Percentage Change (%)" }
+      "axis": {
+        "title": "Percentage Change (%)",
+        "titleFont": "Roboto",
+        "titleFontSize": 15,
+        "labelFont": "Roboto",
+        "labelFontSize": 13
+      }
     },
     "color": {
       "field": "LGA_Name",
       "type": "nominal",
       "scale": {
         "domain": ["Sydney", "Other LGA"],
-        "range": ["#377eb8", "#e41a1c"]
+        "range": ["#276419", "#7fbc41"]
       },
-      "legend": { "title": "Region" }
+      "legend": {
+        "title": "Region",
+        "titleFont": "Roboto",
+        "titleFontSize": 15,
+        "labelFont": "Roboto",
+        "labelFontSize": 13
+      }
     },
     "tooltip": [
       { "field": "Year", "type": "temporal", "title": "Year" },

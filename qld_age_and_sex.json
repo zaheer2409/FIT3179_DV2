@@ -1,13 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "description": "Population pyramid for Brisbane vs Queensland",
-  "title": {
-    "text": "Population pyramid for Brisbane vs Queensland",
-    "fontSize": 16,
-    "font": "Arial",
-    "anchor": "middle",
-    "color": "black"
-  },
   "data": {
     "url": "data/age_and_sex_distribution.csv",
     "format": {
@@ -65,7 +58,11 @@
               "type": "quantitative",
               "axis": {
                 "title": "Males (%)",
-                "orient": "bottom"
+                "orient": "bottom",
+                "titleFont": "Roboto",
+                "titleFontSize": 15,
+                "labelFont": "Roboto",
+                "labelFontSize": 13
               },
               "scale": { "domain": [0, 5], "reverse": true }
             },
@@ -103,7 +100,6 @@
           }
         }
       ],
-      "title": "Males",
       "width": 280
     },
     {
@@ -144,13 +140,23 @@
                 "title": null,
                 "labelAlign": "right",
                 "ticks": false,
-                "domain": false
+                "domain": false,
+                "titleFont": "Roboto",
+                "titleFontSize": 15,
+                "labelFont": "Roboto",
+                "labelFontSize": 13
               }
             },
             "x": {
               "field": "qld_female%",
               "type": "quantitative",
-              "axis": { "title": "Females (%)" },
+              "axis": {
+                "title": "Females (%)",
+                "titleFont": "Roboto",
+                "titleFontSize": 15,
+                "labelFont": "Roboto",
+                "labelFontSize": 13
+              },
               "scale": { "domain": [0, 5] }
             },
             "color": { "value": "#A9A9A9" },
@@ -187,7 +193,6 @@
           }
         }
       ],
-      "title": "Females",
       "width": 280
     }
   ],
