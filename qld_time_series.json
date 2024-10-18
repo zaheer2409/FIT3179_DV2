@@ -2,7 +2,7 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": "Year-over-Year Population Percentage Change for Brisbane and Queensland",
   "data": {
-    "url": "/data/time_series_data.csv"
+    "url": "data/time_series_data.csv"
   },
   "transform": [
     {
