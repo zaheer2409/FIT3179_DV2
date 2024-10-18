@@ -1,0 +1,105 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "autosize": {
+    "type": "fit",
+    "contains": "padding"
+  },
+  "width": "container",
+  "height": "container",
+  "title": {
+    "text": "Estimated Resident Population of Australia 2023 above 65 years",
+    "fontSize": 18,
+    "font": "Arial"
+  },
+  "projection": {
+    "type": "mercator"
+  },
+  "data": {
+    "url": "data/output.json",
+    "format": { "type": "topojson", "feature": "output" }
+  },
+  "transform": [
+    {
+      "lookup": "properties.LGA_CODE_2023",
+      "from": {
+        "data": {
+          "url": "data/65+_data.csv"
+        },
+        "key": "LGA_code",
+        "fields": [
+          "Males",
+          "Male_Percent",
+          "Females",
+          "Female_Percent",
+          "Overall",
+          "Overall_Percent"
+        ]
+      }
+    },
+    {
+      "calculate": "datum[GenderGroupSelection]",
+      "as": "Selected_GenderGroup"
+    },
+    {
+      "calculate": "GenderGroupSelection == 'Overall_Percent' ? datum.Overall : GenderGroupSelection == 'Male_Percent' ? datum.Males : datum.Females",
+      "as": "Selected_Population"
+    }
+  ],
+  "params": [
+    {
+      "name": "GenderGroupSelection",
+      "value": "Overall_Percent",
+      "bind": {
+        "input": "select",
+        "options": ["Overall_Percent", "Male_Percent", "Female_Percent"],
+        "labels": ["Total Population", "Males", "Females"],
+        "name": "Select Gender: ",
+        "element": "div.gender-dropdown"
+      }
+    }
+  ],
+  "layer": [
+    {
+      "mark": { "type": "geoshape", "stroke": "black", "strokeWidth": 0.5 },
+      "encoding": {
+        "color": {
+          "field": "Selected_GenderGroup",
+          "type": "quantitative",
+          "scale": {
+            "type": "threshold",
+            "domain": [10, 15, 20, 25],
+            "range": ["#e6f5d0", "#b8e186", "#7fbc41", "#4d9221", "#276419"]
+          },
+          "legend": {
+            "title": "Scale",
+            "titleFontSize": 12,
+            "labelFontSize": 10,
+            "labelColor": "#4A4A4A",
+            "orient": "bottom-left",
+            "titleFontWeight": "bold",
+            "labelExpr": "datum.value === 25 ? 'above 25%' : datum.value === 20 ? '20%' : datum.value === 15 ? '15%' : datum.value === 10 ? '10%' : 'below 10%'"
+          }
+        },
+        "tooltip": [
+          {
+            "field": "properties.LGA_NAME_2023",
+            "type": "nominal",
+            "title": "Local Area Name"
+          },
+          {
+            "field": "Selected_Population",
+            "type": "quantitative",
+            "title": "Population",
+            "format": ",.0f"
+          },
+          {
+            "field": "Selected_GenderGroup",
+            "type": "quantitative",
+            "title": "Percentage of Population",
+            "format": ".2f"
+          }
+        ]
+      }
+    }
+  ]
+}

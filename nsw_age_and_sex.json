@@ -1,0 +1,195 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+
+  "title": {
+    "text": "Population pyramid for Sydney vs New South Wales",
+    "fontSize": 16,
+    "font": "Arial",
+    "anchor": "middle",
+    "color": "black"
+  },
+  "data": {
+    "url": "/data/age_and_sex_distribution.csv",
+    "format": {
+      "type": "csv"
+    }
+  },
+  "transform": [
+    {
+      "calculate": "datum['syd_male%']",
+      "as": "positive_syd_male"
+    },
+    {
+      "calculate": "datum['nsw_male%']",
+      "as": "positive_nsw_male"
+    }
+  ],
+  "hconcat": [
+    {
+      "layer": [
+        {
+          "mark": {
+            "type": "bar",
+            "opacity": 0.5,
+            "tooltip": true,
+            "stroke": "black",
+            "strokeWidth": 0.5
+          },
+          "encoding": {
+            "y": {
+              "field": "age_group",
+              "sort": [
+                "85+",
+                "80-84",
+                "75-79",
+                "70-74",
+                "65-69",
+                "60-64",
+                "55-59",
+                "50-54",
+                "45-49",
+                "40-44",
+                "35-39",
+                "30-34",
+                "25-29",
+                "20-24",
+                "15-19",
+                "10-14",
+                "5-9",
+                "0-4"
+              ],
+              "axis": null
+            },
+            "x": {
+              "field": "positive_nsw_male",
+              "type": "quantitative",
+              "axis": {
+                "title": "Males (%)",
+                "orient": "bottom"
+              },
+              "scale": { "domain": [0, 5], "reverse": true }
+            },
+            "color": { "value": "#A9A9A9" },
+            "tooltip": [
+              { "field": "age_group", "type": "nominal", "title": "Age Group" },
+              {
+                "field": "positive_nsw_male",
+                "type": "quantitative",
+                "title": "NSW Males (%)",
+                "format": ".2f"
+              }
+            ]
+          }
+        },
+        {
+          "mark": { "type": "bar", "opacity": 0.7, "tooltip": true },
+          "encoding": {
+            "y": { "field": "age_group" },
+            "x": {
+              "field": "positive_syd_male",
+              "type": "quantitative",
+              "scale": { "domain": [0, 5], "reverse": true }
+            },
+            "color": { "value": "#4682B4" },
+            "tooltip": [
+              { "field": "age_group", "type": "nominal", "title": "Age Group" },
+              {
+                "field": "positive_syd_male",
+                "type": "quantitative",
+                "title": "Sydney Males (%)",
+                "format": ".2f"
+              }
+            ]
+          }
+        }
+      ],
+      "title": "Males",
+      "width": 280
+    },
+    {
+      "layer": [
+        {
+          "mark": {
+            "type": "bar",
+            "opacity": 0.5,
+            "tooltip": true,
+            "stroke": "black",
+            "strokeWidth": 0.5
+          },
+          "encoding": {
+            "y": {
+              "field": "age_group",
+              "type": "ordinal",
+              "sort": [
+                "85+",
+                "80-84",
+                "75-79",
+                "70-74",
+                "65-69",
+                "60-64",
+                "55-59",
+                "50-54",
+                "45-49",
+                "40-44",
+                "35-39",
+                "30-34",
+                "25-29",
+                "20-24",
+                "15-19",
+                "10-14",
+                "5-9",
+                "0-4"
+              ],
+              "axis": {
+                "title": null,
+                "labelAlign": "right",
+                "ticks": false,
+                "domain": false
+              }
+            },
+            "x": {
+              "field": "nsw_female%",
+              "type": "quantitative",
+              "axis": { "title": "Females (%)" },
+              "scale": { "domain": [0, 5] }
+            },
+            "color": { "value": "#A9A9A9" },
+            "tooltip": [
+              { "field": "age_group", "type": "nominal", "title": "Age Group" },
+              {
+                "field": "nsw_female%",
+                "type": "quantitative",
+                "title": "NSW Females (%)",
+                "format": ".2f"
+              }
+            ]
+          }
+        },
+        {
+          "mark": { "type": "bar", "opacity": 0.7, "tooltip": true },
+          "encoding": {
+            "y": { "field": "age_group" },
+            "x": {
+              "field": "syd_female%",
+              "type": "quantitative",
+              "scale": { "domain": [0, 5] }
+            },
+            "color": { "value": "#DB7093" },
+            "tooltip": [
+              { "field": "age_group", "type": "nominal", "title": "Age Group" },
+              {
+                "field": "syd_female%",
+                "type": "quantitative",
+                "title": "Sydney Females (%)",
+                "format": ".2f"
+              }
+            ]
+          }
+        }
+      ],
+      "title": "Females",
+      "width": 280
+    }
+  ],
+  "resolve": { "scale": { "x": "independent", "y": "shared" } }
+}

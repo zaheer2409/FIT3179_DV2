@@ -1,0 +1,48 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Year-over-Year Population Percentage Change for Brisbane and Queensland",
+  "data": {
+    "url": "/data/time_series_data.csv"
+  },
+  "transform": [
+    {
+      "filter": "datum.StateName === 'Queensland' && (datum.LGA_Name === 'Brisbane' || datum.LGA_Name === 'Other LGA')"
+    }
+  ],
+  "mark": {
+    "type": "line",
+    "point": {
+      "filled": true,
+      "tooltip": true
+    }
+  },
+  "encoding": {
+    "x": { "field": "Year", "type": "temporal", "axis": { "title": "Year" } },
+    "y": {
+      "field": "Percent_Change",
+      "type": "quantitative",
+      "axis": { "title": "Percentage Change (%)" }
+    },
+    "color": {
+      "field": "LGA_Name",
+      "type": "nominal",
+      "scale": {
+        "domain": ["Brisbane", "Other LGA"],
+        "range": ["#377eb8", "#e41a1c"]
+      },
+      "legend": { "title": "Region" }
+    },
+    "tooltip": [
+      { "field": "Year", "type": "temporal", "title": "Year" },
+      {
+        "field": "Percent_Change",
+        "type": "quantitative",
+        "title": "Percentage Change",
+        "format": ".2f"
+      },
+      { "field": "LGA_Name", "type": "nominal", "title": "Region" }
+    ]
+  },
+  "width": 500,
+  "height": 300
+}

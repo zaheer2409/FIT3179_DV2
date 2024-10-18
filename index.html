@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Australia Population Dashboard</title>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/purecss@2.0.6/build/pure-min.css"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- Section 1: Title and Placeholder -->
+    <div class="pure-g header-section">
+      <div class="pure-u-1">
+        <h1 class="page-title">
+          Australia Estimated Resident Population (2023)
+        </h1>
+        <p class="description-placeholder">
+          [Add some information about the population metrics here]
+        </p>
+      </div>
+    </div>
+
+    <!-- Section 2: Population Map Visuals -->
+    <div class="main-container">
+      <!-- Left Column: Buttons and Description -->
+      <div class="sidebar">
+        <h2>Population Insights by Age Group and Gender</h2>
+        <p id="map-info"></p>
+        <p>
+          Use the buttons below to switch between maps. Click on a map region
+          for more information.
+        </p>
+        <div class="button-group">
+          <button class="pure-button" id="btn-0-14">
+            Population aged 0 to 14
+          </button>
+          <button class="pure-button" id="btn-15-64">
+            Population aged 15 to 64
+          </button>
+          <button class="pure-button" id="btn-65-plus">
+            Population aged 65 years and over
+          </button>
+        </div>
+      </div>
+
+      <!-- Right Column: Map Visual -->
+      <div class="map-container">
+        <div id="visualization"></div>
+        <div class="gender-dropdown"></div>
+      </div>
+    </div>
+
+    <!-- Section 3: State Visuals for Population Pyramid and Time Series -->
+    <div class="state-visuals-container">
+      <div class="state-dropdown">
+        <label for="state-select">Choose a state:</label>
+        <select id="state-select">
+          <option value="nsw">New South Wales</option>
+          <option value="vic">Victoria</option>
+          <option value="qld">Queensland</option>
+          <option value="nt">Northern Territory</option>
+          <option value="sa">South Australia</option>
+          <option value="wa">Western Australia</option>
+        </select>
+      </div>
+
+      <div class="state-visuals">
+        <div class="state-info top-left">
+          <h2>Population Pyramid</h2>
+          <p>[Placeholder text for population pyramid]</p>
+        </div>
+        <div class="state-chart top-right" id="pyramid-visual"></div>
+        <div class="state-info bottom-left">
+          <h2>Time Series Population Growth</h2>
+          <p>[Placeholder text for time series graph]</p>
+        </div>
+        <div class="state-chart bottom-right" id="time-series-visual"></div>
+      </div>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
