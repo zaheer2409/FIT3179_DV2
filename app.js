@@ -6,39 +6,37 @@ function embedVisualization(spec, target) {
 // Function to set the active button
 function setActiveButton(button) {
   const buttons = document.querySelectorAll(".pure-button");
-  buttons.forEach((btn) => btn.classList.remove("active")); // Remove active class from all buttons
-  button.classList.add("active"); // Add active class to the clicked button
+  buttons.forEach((btn) => btn.classList.remove("active"));
+  button.classList.add("active");
 }
 
 // Event listeners for buttons
 document.getElementById("btn-0-14").addEventListener("click", function () {
   embedVisualization("0-14_pop_choropleth.json", "#visualization");
-  setActiveButton(this); // Highlight this button
+  setActiveButton(this);
 });
 
 document.getElementById("btn-15-64").addEventListener("click", function () {
   embedVisualization("15-64_pop_choropleth.json", "#visualization");
-  setActiveButton(this); // Highlight this button
+  setActiveButton(this);
 });
 
 document.getElementById("btn-65-plus").addEventListener("click", function () {
   embedVisualization("65+_pop_choropleth.json", "#visualization");
-  setActiveButton(this); // Highlight this button
+  setActiveButton(this);
 });
 
-// Default load for 0-14 years map and highlight the button
+// Default load for 0-14 years map
 document.addEventListener("DOMContentLoaded", function () {
   embedVisualization("0-14_pop_choropleth.json", "#visualization");
-  setActiveButton(document.getElementById("btn-0-14")); // Highlight the default button
+  setActiveButton(document.getElementById("btn-0-14"));
 });
 
-// Select the buttons and the map info element
 const btn0to14 = document.getElementById("btn-0-14");
 const btn15to64 = document.getElementById("btn-15-64");
 const btn65plus = document.getElementById("btn-65-plus");
 const mapInfo = document.getElementById("map-info");
 
-// Define the text for each map selection
 const mapInfoTexts = {
   "0-14":
     "This map shows the estimated resident population of children aged 0 to 14 years in 2023 across Australia.<br /><br />" +
@@ -72,8 +70,6 @@ btn15to64.addEventListener("click", function () {
 btn65plus.addEventListener("click", function () {
   mapInfo.innerHTML = mapInfoTexts["65-plus"];
 });
-
-// Section 3: State Visuals Logic
 
 const stateInfoTexts = {
   nsw: {
